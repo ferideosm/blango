@@ -4,6 +4,9 @@ from django.conf import settings
 class Tag(models.Model):
   values = models.TextField()
 
+  class Meta:
+      ordering = ["values"]
+
   def ___str__(self):
     return self.values
 
