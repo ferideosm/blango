@@ -1,5 +1,8 @@
 from django.db import models
 from django.conf import settings
+from versatileimagefield.fields import VersatileImageField, PPOIField
+
+
 
 class Tag(models.Model):
   values = models.TextField()
@@ -20,8 +23,10 @@ class Post(models.Model):
     slug = models.SlugField(unique=True)
     summary = models.TextField(max_length=500)
     content = models.TextField()
-    # tags = models.ManyToManyField(Tag, related_name="posts", null=True)
+    tags = models.ManyToManyField(Tag, related_name="posts", null=True)
     value = models.TextField(max_length=100, unique=True, null=True)
+    hero_image = VersatileImageField(upload_to="hero_images", ppoi_field="ppoi", null=True, blank=True)
+    ppoi = PPOIField(null=True, blank=True)
 
     def __str__(self):
         return self.title

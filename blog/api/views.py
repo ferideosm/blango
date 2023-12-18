@@ -52,7 +52,7 @@ class PostViewSet(viewsets.ModelViewSet):
     ordering_fields = ["published_at", "author", "title", "slug"]
     permission_classes = [AuthorModifyOrReadOnly | IsAdminUserForObject]
     queryset = Post.objects.all()
-    print('queryset', queryset)
+
     def get_serializer_class(self):
         if self.action in ("list", "create"):
             return PostSerializer
