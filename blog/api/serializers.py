@@ -47,7 +47,7 @@ class CommentSerializer(serializers.ModelSerializer):
 
 
 class PostDetailSerializer(PostSerializer):
-    comments = CommentSerializer(many=True)
+    # comments = CommentSerializer(many=True)
 
     def update(self, instance, validated_data):
         comments = validated_data.pop("comments")
